@@ -1,0 +1,12 @@
+# ~/.tmuxinator/session.yml.example
+# you can make as many tabs as you wish...
+
+project_name: my_project
+project_root: /path/to/my/project
+windows:
+  - editor: vim
+  - shell:
+      layout: cc77,238x57,0,0{119x57,0,0,0,118x57,120,0,1}
+      panes:
+        - #empty, will just run plain zsh
+        - git pull
