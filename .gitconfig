@@ -57,14 +57,14 @@
 	cmd = vim -f -c "Gdiff" "$MERGED"
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = ~/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [branch]
 	autosetupmerge = true
 
 [push]
-	default = current
+	default = simple
 
 [apply]
 	whitespace = fix
@@ -335,5 +335,16 @@
 	#  doesn't really work, should probably use git for-each-ref 
 	#heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;%H;%Cblue%f%Creset' | git name-rev --stdin --always --name-only | column -t -s';'"
 
+	# legit
 	pconfig = config -f .git/config
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
 
+[hub]
+	protocol = https
